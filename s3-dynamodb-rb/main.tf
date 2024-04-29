@@ -38,7 +38,7 @@ resource "aws_s3_bucket_policy" "terraform_state_policy" {
         Effect    = "Allow"
         Resource  = "arn:aws:s3:::${aws_s3_bucket.terraform_state.bucket}/*"
         Principal = {
-          AWS = ["arn:aws:iam::00000000000:user/terraform-user"]
+          AWS = ["arn:aws:iam::${var.aws_account_id}:user/terraform-user"]
         }
       }
     ]
