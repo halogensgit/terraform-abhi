@@ -10,3 +10,9 @@ subnets = {
   "rds-subnet1"     = { cidr: "10.0.5.0/24", az: "ap-northeast-2a", route_table: "private" },
   "rds-subnet2"     = { cidr: "10.0.6.0/24", az: "ap-northeast-2c", route_table: "private" }
 }
+
+domain_name   = "halogenslearning.com"
+route53_zone_id = "Z013519714YHQC8RITFT3"  // Your actual Route 53 hosted zone ID
+aws_region    = "ap-northeast-2"    // Seoul region, unless different for ALB
+
+
