@@ -3,12 +3,18 @@ region       = "ap-northeast-2"
 vpc_cidr     = "10.0.0.0/16"
 environment_name    = "production"
 subnets = {
-  "public-subnet1"  = { cidr: "10.0.1.0/24", az: "ap-northeast-2a", route_table: "public" },
-  "private-subnet1" = { cidr: "10.0.2.0/24", az: "ap-northeast-2a", route_table: "private" },
-  "alb-subnet1"     = { cidr: "10.0.3.0/24", az: "ap-northeast-2a", route_table: "public" },
-  "alb-subnet2"     = { cidr: "10.0.4.0/24", az: "ap-northeast-2c", route_table: "public" },
-  "rds-subnet1"     = { cidr: "10.0.5.0/24", az: "ap-northeast-2a", route_table: "private" },
-  "rds-subnet2"     = { cidr: "10.0.6.0/24", az: "ap-northeast-2c", route_table: "private" }
+  "public-subnet-2a"  = { cidr: "10.0.1.0/24", az: "ap-northeast-2a", route_table: "public" },
+  "private-subnet-2a" = { cidr: "10.0.2.0/24", az: "ap-northeast-2a", route_table: "private" },
+  "alb-subnet-2a"     = { cidr: "10.0.3.0/24", az: "ap-northeast-2a", route_table: "public" },
+  "alb-subnet-2b"     = { cidr: "10.0.4.0/24", az: "ap-northeast-2b", route_table: "public" },
+  "alb-subnet-2c"     = { cidr: "10.0.5.0/24", az: "ap-northeast-2c", route_table: "public" },
+  "rds-subnet-2a"     = { cidr: "10.0.6.0/24", az: "ap-northeast-2a", route_table: "private" },
+  "rds-subnet-2b"     = { cidr: "10.0.7.0/24", az: "ap-northeast-2b", route_table: "private" }
+  "rds-subnet-2c"     = { cidr: "10.0.8.0/24", az: "ap-northeast-2c", route_table: "private" }
+  "ecs-subnet-2a"     = { cidr: "10.0.9.0/24", az: "ap-northeast-2a", route_table: "private" }
+  "ecs-subnet-2b"     = { cidr: "10.0.10.0/24", az: "ap-northeast-2b", route_table: "private"}
+  "ecs-subnet-2c"     = { cidr: "10.0.11.0/24", az: "ap-northeast-2c", route_table: "private" }
+
 }
 
 // For AWS Certificate Manager (For ALB)
@@ -21,6 +27,8 @@ aws_region    = "ap-northeast-2"
 bucket_name = "vsws-prod-frontend-s3"
 cloudfront_domain_names  = [ "dev.halogenslearning.com" ]
 
+// For EC2 Security Group
 
+office_ip = "183.82.107.253/32"  // Replace "your_office_ip_here/32" with the actual CIDR notation of your office IP
 
 

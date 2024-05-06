@@ -53,4 +53,8 @@ variable "cloudfront_domain_names" {
 }
 
 
+variable "office_ip" {
+  description = "CIDR block for the office IP to allow SSH access to EC2"
+  type        = string
+}
 

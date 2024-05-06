@@ -14,10 +14,11 @@ module "vpc" {
   subnets      = var.subnets
 }
 
-module "ec2_security_group" {
+module "security_groups" {
   source       = "../modules/security_groups"
   project_name = var.project_name
   vpc_id       = module.vpc.vpc_id
+  office_ip = var.office_ip
 }
 
 module "frontend_s3_bucket" {
