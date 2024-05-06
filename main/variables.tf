@@ -42,3 +42,15 @@ variable "aws_region" {
   description = "AWS region for the ALB certificate."
   default     = "ap-northeast-2"  // Your default AWS region
 }
+
+variable "bucket_name" {
+  description = "Name of the S3 bucket to be used by CloudFront"
+}
+
+variable "cloudfront_domain_names" {
+  description = "List of alternate domain names (CNAMEs) for the CloudFront distribution."
+  type        = list(string)
+}
+
+
+

@@ -6,7 +6,7 @@
 crash.log
 
 # Ignore Terraform vars files
-sensitive.tfvars
+#sensitive.tfvars
 
 
 # Ignore the .terraform directory

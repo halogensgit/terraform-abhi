@@ -11,8 +11,16 @@ subnets = {
   "rds-subnet2"     = { cidr: "10.0.6.0/24", az: "ap-northeast-2c", route_table: "private" }
 }
 
+// For AWS Certificate Manager (For ALB)
+// CloudFront region is defined in acm module main.tf file
 domain_name   = "halogenslearning.com"
-route53_zone_id = "Z013519714YHQC8RITFT3"  // Your actual Route 53 hosted zone ID
-aws_region    = "ap-northeast-2"    // Seoul region, unless different for ALB
+route53_zone_id = "Z013519714YHQC8RITFT3"  // Your actual Route 53 hosted zone ID (For Everything related to R53)
+aws_region    = "ap-northeast-2"    
+
+// For CloudFront
+bucket_name = "vsws-prod-frontend-s3"
+cloudfront_domain_names  = [ "dev.halogenslearning.com" ]
+
+
 
 
