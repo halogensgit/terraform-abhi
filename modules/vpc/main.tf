@@ -70,13 +70,13 @@ resource "aws_route" "nat_route" {
 
 # Subnets Association with Route Tables
 resource "aws_route_table_association" "public_rta" {
-  for_each    = { for key, val in var.subnets : key => val if val.route_table == "public" }
-  subnet_id   = aws_subnet.subnets[each.key].id
+  for_each       = { for key, val in var.subnets : key => val if val.route_table == "public" }
+  subnet_id      = aws_subnet.subnets[each.key].id
   route_table_id = aws_route_table.public_rtb.id
 }
 
 resource "aws_route_table_association" "private_rta" {
-  for_each    = { for key, val in var.subnets : key => val if val.route_table == "private" }
-  subnet_id   = aws_subnet.subnets[each.key].id
+  for_each       = { for key, val in var.subnets : key => val if val.route_table == "private" }
+  subnet_id      = aws_subnet.subnets[each.key].id
   route_table_id = aws_route_table.private_rtb.id
 }

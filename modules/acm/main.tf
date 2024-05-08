@@ -1,19 +1,19 @@
 provider "aws" {
-  region = "us-east-1"  # Provider for CloudFront certificate
+  region = "us-east-1" # Provider for CloudFront certificate
   alias  = "us-east-1"
 }
 
 provider "aws" {
-  region = var.aws_region  # Provider for ALB certificate
+  region = var.aws_region # Provider for ALB certificate
   alias  = "default"
 }
 
 resource "aws_acm_certificate" "cloudfront_cert" {
-  provider          = aws.us-east-1
-  domain_name       = var.domain_name
-  validation_method = "DNS"
+  provider                  = aws.us-east-1
+  domain_name               = var.domain_name
+  validation_method         = "DNS"
   subject_alternative_names = ["*.${var.domain_name}"]
-  key_algorithm     = "EC_prime256v1"
+  key_algorithm             = "EC_prime256v1"
 
   lifecycle {
     create_before_destroy = true
@@ -21,12 +21,12 @@ resource "aws_acm_certificate" "cloudfront_cert" {
 }
 
 resource "aws_acm_certificate" "alb_cert" {
-  provider          = aws.default
-  domain_name       = var.domain_name
-  validation_method = "DNS"
+  provider                  = aws.default
+  domain_name               = var.domain_name
+  validation_method         = "DNS"
   subject_alternative_names = ["*.${var.domain_name}"]
-  key_algorithm     = "EC_prime256v1"
-  
+  key_algorithm             = "EC_prime256v1"
+
 
   lifecycle {
     create_before_destroy = true

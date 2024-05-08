@@ -1,10 +1,10 @@
 provider "aws" {
-  region = var.region  # Default region for most resources
+  region = var.region # Default region for most resources
 }
 
 provider "aws" {
   alias  = "global"
-  region = "us-east-1"  # CloudFront specsific provider
+  region = "us-east-1" # CloudFront specific provider
 }
 
 module "vpc" {
@@ -18,7 +18,7 @@ module "security_groups" {
   source       = "../modules/security_groups"
   project_name = var.project_name
   vpc_id       = module.vpc.vpc_id
-  office_ip = var.office_ip
+  office_ip    = var.office_ip
 }
 
 module "frontend_s3_bucket" {
@@ -27,18 +27,18 @@ module "frontend_s3_bucket" {
 }
 
 module "acm" {
-  source         = "../modules/acm"
-  domain_name    = var.domain_name
+  source          = "../modules/acm"
+  domain_name     = var.domain_name
   route53_zone_id = var.route53_zone_id
 }
 
 module "cloudfront" {
-  source                 = "../modules/cloudfront"
-  bucket_name            = module.frontend_s3_bucket.bucket_name
-  domain_names           = var.cloudfront_domain_names
-  acm_certificate_arn    = module.acm.cloudfront_certificate_arn 
-  route53_zone_id        = var.route53_zone_id
-  oai_comment            = "Origin Access Identity for ${var.project_name}"
+  source              = "../modules/cloudfront"
+  bucket_name         = module.frontend_s3_bucket.bucket_name
+  domain_names        = var.cloudfront_domain_names
+  acm_certificate_arn = module.acm.cloudfront_certificate_arn
+  route53_zone_id     = var.route53_zone_id
+  oai_comment         = "Origin Access Identity for ${var.project_name}"
 }
 
 
@@ -61,6 +61,15 @@ module "iam_role_ec2_ssm" {
   source = "../modules/iam"
 }
 
-output "ec2_ssm_role_arn" {
-  value = module.iam_role_ec2_ssm.iam_role_arn
+module "ec2_instance" {
+  source                    = "../modules/ec2"
+  ami_id                    = var.ami_id
+  instance_type             = var.instance_type
+  key_name                  = var.key_name
+  instance_subnet           = var.instance_subnet
+  subnet_id                 = module.vpc.subnet_ids[var.instance_subnet]
+  security_group_id         = module.security_groups.ec2_security_group_id
+  iam_instance_profile_name = module.iam_role_ec2_ssm.iam_instance_profile_name
+  project_name              = var.project_name
 }
+

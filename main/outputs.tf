@@ -23,4 +23,8 @@ output "cloudfront_distribution_domain" {
   value       = module.cloudfront.cloudfront_distribution_domain
 }
 
+output "ec2_ssm_role_arn" {
+  value       = module.iam_role_ec2_ssm.iam_role_arn
+  description = "The ARN of the IAM role for EC2 SSM"
+}
 

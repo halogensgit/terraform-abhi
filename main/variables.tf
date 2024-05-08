@@ -13,11 +13,12 @@ variable "vpc_cidr" {
   type        = string
 }
 
+
 variable "subnets" {
   description = "Map of subnet configurations"
-  type        = map(object({
-    cidr        : string
-    az          : string
+  type = map(object({
+    cidr : string
+    az : string
     route_table : string
   }))
 }
@@ -40,7 +41,7 @@ variable "route53_zone_id" {
 variable "aws_region" {
   type        = string
   description = "AWS region for the ALB certificate."
-  default     = "ap-northeast-2"  // Your default AWS region
+  default     = "ap-northeast-2" // Your default AWS region
 }
 
 variable "bucket_name" {
@@ -57,4 +58,28 @@ variable "office_ip" {
   description = "CIDR block for the office IP to allow SSH access to EC2"
   type        = string
 }
+
+variable "ami_id" {
+  description = "The AMI ID to use for the instance."
+  type        = string
+}
+
+
+variable "instance_type" {
+  description = "The type of instance to start."
+  type        = string
+}
+
+variable "key_name" {
+  description = "The key pair name to attach to the instance."
+  type        = string
+}
+
+
+variable "instance_subnet" {
+  description = "Subnet ID for the EC2 instance"
+  type        = string
+}
+
+
 

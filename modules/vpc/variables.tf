@@ -11,8 +11,8 @@ variable "vpc_cidr" {
 variable "subnets" {
   description = "Map of subnet configurations including CIDR, AZ, and associated route table"
   type = map(object({
-    cidr        : string
-    az          : string
+    cidr : string
+    az : string
     route_table : string
   }))
 }
