@@ -20,6 +20,15 @@ output "private_subnet_ids" {
   }
 }
 
+output "rds_subnet_ids" {
+  value = {
+    for s in aws_subnet.subnets :
+    s.tags["Name"] => s.id
+    if contains(split("-", s.tags["Name"]), "rds")
+  }
+  description = "Map of RDS subnet IDs keyed by name."
+}
+
 
 
 output "nat_gateway_id" {

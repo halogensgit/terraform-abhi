@@ -73,3 +73,9 @@ module "ec2_instance" {
   project_name              = var.project_name
 }
 
+module "rds_subnet_group" {
+  source           = "../modules/rds-subnet-group"
+  project_name     = var.project_name
+  subnet_ids       = [for key, val in module.vpc.rds_subnet_ids : val]
+  environment_name = var.environment_name
+}
