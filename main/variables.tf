@@ -8,6 +8,12 @@ variable "region" {
   type        = string
 }
 
+variable "aws_region" {
+  type        = string
+  description = "AWS region for the ALB certificate."
+  default     = "ap-northeast-2" // Your default AWS region
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
@@ -36,12 +42,6 @@ variable "domain_name" {
 variable "route53_zone_id" {
   type        = string
   description = "The Route 53 Hosted Zone ID for DNS validation."
-}
-
-variable "aws_region" {
-  type        = string
-  description = "AWS region for the ALB certificate."
-  default     = "ap-northeast-2" // Your default AWS region
 }
 
 variable "bucket_name" {
