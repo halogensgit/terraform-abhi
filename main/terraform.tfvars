@@ -38,3 +38,23 @@ ami_id          = "ami-01b15011585ebc739"
 instance_type   = "t2.micro"
 key_name        = "vsws-prod-bys"              # Create a keypair manually via console and give the name of the keypair here
 instance_subnet = "vsws-prod-public-subnet-2a" # You can change this as needed for different deployments
+
+// For RDS
+
+db_instance_identifier  = "vsws-prod-rds"
+engine                  = "postgres"
+engine_version          = "16.1"
+instance_class          = "db.t4g.small"
+allocated_storage       = 20
+master_username         = "vswsmaster"
+master_password         = "Hello_bys123"
+db_parameter_group_name = "default.postgres16"
+monitoring_role_arn     = "arn:aws:iam::087914590515:role/rds-monitoring-role" # Replace with your actual ARN
+backup_retention_period = 3
+backup_window           = "02:00-03:00"
+maintenance_window      = "Sun:03:00-Sun:04:00"
+deletion_protection     = true
+
+
+
+

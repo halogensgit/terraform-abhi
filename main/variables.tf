@@ -82,4 +82,73 @@ variable "instance_subnet" {
 }
 
 
+variable "db_instance_identifier" {
+  description = "The identifier for the RDS instance"
+  type        = string
+}
 
+variable "engine" {
+  description = "The type of database engine to use"
+  type        = string
+}
+
+variable "engine_version" {
+  description = "The version of the database engine to use"
+  type        = string
+}
+
+variable "instance_class" {
+  description = "The instance type to use"
+  type        = string
+}
+
+variable "allocated_storage" {
+  description = "The amount of storage allocated to the RDS instance"
+  type        = number
+}
+
+
+
+variable "master_username" {
+  description = "The master username for the RDS instance"
+  type        = string
+}
+
+variable "master_password" {
+  description = "The master password for the RDS instance"
+  type        = string
+  sensitive   = true
+}
+
+
+
+
+variable "db_parameter_group_name" {
+  description = "The name of the DB parameter group"
+  type        = string
+}
+
+variable "monitoring_role_arn" {
+  description = "The ARN of the IAM role for enhanced monitoring"
+  type        = string
+}
+
+variable "backup_retention_period" {
+  description = "The number of days to retain backups"
+  type        = number
+}
+
+variable "backup_window" {
+  description = "The daily time range during which automated backups are created"
+  type        = string
+}
+
+variable "maintenance_window" {
+  description = "The weekly time range during which system maintenance can occur"
+  type        = string
+}
+
+variable "deletion_protection" {
+  description = "Specifies whether to enable deletion protection for the RDS instance"
+  type        = bool
+}

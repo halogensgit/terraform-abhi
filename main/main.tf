@@ -74,8 +74,30 @@ module "ec2_instance" {
 }
 
 module "rds_subnet_group" {
-  source           = "../modules/rds-subnet-group"
+  source           = "../modules/rds_subnet_group"
   project_name     = var.project_name
   subnet_ids       = [for key, val in module.vpc.rds_subnet_ids : val]
   environment_name = var.environment_name
 }
+
+module "rds" {
+  source                  = "../modules/rds"
+  project_name            = var.project_name
+  db_instance_identifier  = var.db_instance_identifier
+  engine                  = var.engine
+  engine_version          = var.engine_version
+  instance_class          = var.instance_class
+  allocated_storage       = var.allocated_storage
+  master_username         = var.master_username
+  master_password         = var.master_password
+  db_parameter_group_name = var.db_parameter_group_name
+  db_subnet_group_name    = module.rds_subnet_group.rds_subnet_group_name
+  rds_security_group_id   = module.security_groups.rds_security_group_id
+  monitoring_role_arn     = var.monitoring_role_arn
+  backup_retention_period = var.backup_retention_period
+  backup_window           = var.backup_window
+  maintenance_window      = var.maintenance_window
+  deletion_protection     = var.deletion_protection
+}
+
+
