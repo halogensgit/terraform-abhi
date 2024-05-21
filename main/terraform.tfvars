@@ -34,7 +34,7 @@ office_ip = "183.82.107.253/32" // Replace "your_office_ip_here/32" with the act
 
 // For EC2
 
-ami_id          = "ami-01b15011585ebc739"
+ami_id          = "ami-01b15011585ebc739" #AWS Linux 2
 instance_type   = "t2.micro"
 key_name        = "vsws-prod-bys"              # Create a keypair manually via console and give the name of the keypair here
 instance_subnet = "vsws-prod-public-subnet-2a" # You can change this as needed for different deployments

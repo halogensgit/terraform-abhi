@@ -100,4 +100,28 @@ module "rds" {
   deletion_protection     = var.deletion_protection
 }
 
+module "target_group" {
+  source            = "../modules/target_group"
+  project_name      = var.project_name
+  environment_name  = var.environment_name
+  port              = var.target_group_port
+  vpc_id            = module.vpc.vpc_id
+  health_check_path = var.health_check_path
+}
+
+module "alb" {
+  source                = "../modules/alb"
+  project_name          = var.project_name
+  environment_name      = var.environment_name
+  vpc_id                = module.vpc.vpc_id
+  alb_subnet_ids        = [for key, val in module.vpc.subnet_ids : val if contains(split("-", key), "alb")]
+  alb_security_group_id = module.security_groups.alb_security_group_id
+  alb_certificate_arn   = module.acm.alb_certificate_arn
+  target_group_arn      = module.target_group.target_group_arn
+}
+
+
+
+
+
 

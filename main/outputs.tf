@@ -28,3 +28,12 @@ output "ec2_ssm_role_arn" {
   description = "The ARN of the IAM role for EC2 SSM"
 }
 
+output "alb_arn" {
+  description = "The ARN of the ALB"
+  value       = module.alb.alb_arn
+}
+
+output "alb_dns_name" {
+  description = "The DNS name of the ALB"
+  value       = module.alb.alb_dns_name
+}

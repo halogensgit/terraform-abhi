@@ -152,3 +152,17 @@ variable "deletion_protection" {
   description = "Specifies whether to enable deletion protection for the RDS instance"
   type        = bool
 }
+
+variable "target_group_port" {
+  description = "The port on which targets receive traffic"
+  type        = number
+  default     = 80
+}
+
+variable "health_check_path" {
+  description = "The destination for the health check requests"
+  type        = string
+  default     = "/"
+}
+
+
