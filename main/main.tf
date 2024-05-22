@@ -120,6 +120,11 @@ module "alb" {
   target_group_arn      = module.target_group.target_group_arn
 }
 
+module "ecr" {
+  source           = "../modules/ecr"
+  project_name     = var.project_name
+  environment_name = var.environment_name
+}
 
 
 

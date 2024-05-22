@@ -8,6 +8,8 @@ variable "region" {
   type        = string
 }
 
+// Change ALB region as needed //
+
 variable "aws_region" {
   type        = string
   description = "AWS region for the ALB certificate."

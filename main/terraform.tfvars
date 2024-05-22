@@ -1,4 +1,4 @@
-project_name     = "vsws-prod"
+project_name     = "curengo-prod"
 region           = "ap-northeast-2"
 vpc_cidr         = "10.0.0.0/16"
 environment_name = "Production"
@@ -24,8 +24,8 @@ route53_zone_id = "Z0836783N8WCTNP7MVLQ" // Your actual Route 53 hosted zone ID 
 aws_region      = "ap-northeast-2"
 
 // For CloudFront
-bucket_name             = "vsws-prod-frontend-s3"
-cloudfront_domain_names = ["prod.abhinaydurishetty.in"]
+bucket_name             = "curengo-prod-frontend-s3"
+cloudfront_domain_names = ["www.abhinaydurishetty.in", "abhinaydurishetty.in"]
 
 // For EC2 Security Group
 
@@ -34,19 +34,19 @@ office_ip = "183.82.107.253/32" // Replace "your_office_ip_here/32" with the act
 
 // For EC2
 
-ami_id          = "ami-01b15011585ebc739" #AWS Linux 2
-instance_type   = "t2.micro"
-key_name        = "vsws-prod-bys"              # Create a keypair manually via console and give the name of the keypair here
-instance_subnet = "vsws-prod-public-subnet-2a" # You can change this as needed for different deployments
+ami_id          = "ami-0dfabddd52dec98c7"         # AWS Linux 2023
+instance_type   = "t3a.micro"                     # Change Instance type as needed
+key_name        = "vsws-prod-bys"                 # Create a keypair manually via console and give the name of the keypair here
+instance_subnet = "curengo-prod-public-subnet-2a" # You can change this as needed for different deployments
 
 // For RDS
 
-db_instance_identifier  = "vsws-prod-rds"
+db_instance_identifier  = "curengo-prod-rds"
 engine                  = "postgres"
 engine_version          = "16.1"
 instance_class          = "db.t4g.small"
 allocated_storage       = 20
-master_username         = "vswsmaster"
+master_username         = "curengomaster"
 master_password         = "Hello_bys123"
 db_parameter_group_name = "default.postgres16"
 monitoring_role_arn     = "arn:aws:iam::087914590515:role/rds-monitoring-role" # Replace with your actual ARN
