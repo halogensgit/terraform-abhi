@@ -18,10 +18,13 @@ subnets = {
 }
 
 // For AWS Certificate Manager (For ALB)
-// CloudFront region is defined in acm module main.tf file
+
 domain_name     = "abhinaydurishetty.in"
 route53_zone_id = "Z0836783N8WCTNP7MVLQ" // Your actual Route 53 hosted zone ID (For Everything related to R53)
 aws_region      = "ap-northeast-2"
+
+// Note: CloudFront region is defined in acm module main.tf file
+
 
 // For CloudFront
 bucket_name             = "curengo-prod-frontend-s3"
@@ -41,13 +44,13 @@ instance_subnet = "curengo-prod-public-subnet-2a" # You can change this as neede
 
 // For RDS
 
-db_instance_identifier  = "curengo-prod-rds"
+db_instance_identifier  = "curengo-prod-rds" # Replace with your actual RDS DB Identifier
 engine                  = "postgres"
 engine_version          = "16.1"
 instance_class          = "db.t4g.small"
 allocated_storage       = 20
-master_username         = "curengomaster"
-master_password         = "Hello_bys123"
+master_username         = "curengomaster" # Replace with your actual master username
+master_password         = "Hello_bys123"  # Replace with your actual master password
 db_parameter_group_name = "default.postgres16"
 monitoring_role_arn     = "arn:aws:iam::087914590515:role/rds-monitoring-role" # Replace with your actual ARN
 backup_retention_period = 3

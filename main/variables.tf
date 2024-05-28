@@ -13,7 +13,6 @@ variable "region" {
 variable "aws_region" {
   type        = string
   description = "AWS region for the ALB certificate."
-  default     = "ap-northeast-2" // Your default AWS region
 }
 
 variable "vpc_cidr" {
