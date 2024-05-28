@@ -21,13 +21,13 @@ subnets = {
 
 domain_name     = "abhinaydurishetty.in"
 route53_zone_id = "Z0836783N8WCTNP7MVLQ" // Your actual Route 53 hosted zone ID (For Everything related to R53)
-aws_region      = "ap-northeast-2"
+aws_region      = "ap-northeast-2"       // Your default region for ALB certificate
 
 // Note: CloudFront region is defined in acm module main.tf file
 
 
 // For CloudFront
-bucket_name             = "curengo-prod-frontend-s3"
+bucket_name             = "curengo-prod-frontend-s3" # Change the bucket name as project_name-frontend-s3
 cloudfront_domain_names = ["www.abhinaydurishetty.in", "abhinaydurishetty.in"]
 
 // For EC2 Security Group
@@ -46,12 +46,12 @@ instance_subnet = "curengo-prod-public-subnet-2a" # You can change this as neede
 
 db_instance_identifier  = "curengo-prod-rds" # Replace with your actual RDS DB Identifier
 engine                  = "postgres"
-engine_version          = "16.1"
+engine_version          = "16.1" # Change the version as required
 instance_class          = "db.t4g.small"
 allocated_storage       = 20
-master_username         = "curengomaster" # Replace with your actual master username
-master_password         = "Hello_bys123"  # Replace with your actual master password
-db_parameter_group_name = "default.postgres16"
+master_username         = "curengomaster"                                      # Replace with your actual master username
+master_password         = "Hello_bys123"                                       # Replace with your actual master password
+db_parameter_group_name = "default.postgres16"                                 # Change this as per the engine version 
 monitoring_role_arn     = "arn:aws:iam::087914590515:role/rds-monitoring-role" # Replace with your actual ARN
 backup_retention_period = 3
 backup_window           = "02:00-03:00"
