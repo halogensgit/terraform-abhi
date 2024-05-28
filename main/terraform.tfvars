@@ -21,7 +21,7 @@ subnets = {
 
 domain_name     = "abhinaydurishetty.in"
 route53_zone_id = "Z0836783N8WCTNP7MVLQ" // Your actual Route 53 hosted zone ID (For Everything related to R53)
-aws_region      = "ap-northeast-2"       // Your default region for ALB certificate
+aws_region      = "ap-northeast-2"       // Your AWS region for ALB certificate
 
 // Note: CloudFront region is defined in acm module main.tf file
 
