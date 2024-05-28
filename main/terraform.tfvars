@@ -1,5 +1,5 @@
 project_name     = "curengo-prod"
-region           = "ap-northeast-2"
+region           = "ap-northeast-2" # Your AWS region for your project
 vpc_cidr         = "10.0.0.0/16"
 environment_name = "Production"
 subnets = {
